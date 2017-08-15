@@ -99,6 +99,9 @@ public class Compass extends Activity implements SensorEventListener {
         sendAngle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TextView showAngle = (TextView) findViewById(R.id.textView10);
+                showAngle.setVisibility(View.VISIBLE);
+                showAngle.setText("You have sent " + Float.toString(degree) + (char) 0x00B0);
                 sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
 
                 numReports = sp.getInt(userId, 0);
@@ -112,7 +115,7 @@ public class Compass extends Activity implements SensorEventListener {
             }
         });
 
-        tvHeading.setText(Float.toString(degree) + " degrees");
+        tvHeading.setText(Float.toString(degree) + (char) 0x00B0);
 
         // create a rotation animation (reverse turn degree degrees)
         RotateAnimation ra = new RotateAnimation(

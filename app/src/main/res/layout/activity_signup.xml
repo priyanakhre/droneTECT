@@ -25,16 +25,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="100dp"
-            android:layout_marginTop="100dp"
             android:cropToPadding="true"
-            app:srcCompat="@drawable/eye" />
+            app:srcCompat="@drawable/trans_logov3" />
     </LinearLayout>
 
     <EditText
@@ -42,27 +42,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Email?" />
+        android:textCursorDrawable="@android:color/holo_blue_light"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:hint="UserID"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/signup_input_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Password?" />
+        android:textCursorDrawable="@android:color/holo_blue_light"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:hint="Password"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btn_link_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_light"
         android:text="Sign In" />
 
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_light"
         android:text="Register" />
 
 </LinearLayout>

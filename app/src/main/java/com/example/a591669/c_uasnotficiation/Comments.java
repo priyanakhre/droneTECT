@@ -61,7 +61,7 @@ public class Comments extends AppCompatActivity {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putInt(userId, numReports);
                 editor.commit();
-                startActivity(new Intent(Comments.this, ConfirmationActivity.class));
+                startActivity(new Intent(Comments.this, ConfirmationActivity.class).putExtra("message", userId));
                 finish();
             }
         });

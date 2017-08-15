@@ -1,5 +1,6 @@
 package com.example.a591669.c_uasnotficiation;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity{
 
 
     private FirebaseAuth mAuth;
@@ -75,6 +76,7 @@ public class SignupActivity extends AppCompatActivity {
         String email = signupInputEmail.getText().toString().trim();
         String password = signupInputPassword.getText().toString().trim();
 
+        email += "@bah.com";
         if(!checkEmail()) {   //if not valid email or password,  exit submitForm method
             return;
         }
@@ -97,7 +99,7 @@ public class SignupActivity extends AppCompatActivity {
                             Log.d(TAG,"Authentication failed." + task.getException());
 
                         } else {  //if successful
-                            startActivity(new Intent(SignupActivity.this, UserActivity.class));  //start an activity of the User Activity
+                            startActivity(new Intent(SignupActivity.this, MapsNotifyActivity.class));  //start an activity of the User Activity
                             finish();
                         }
                     }
@@ -107,6 +109,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private void LoginForm() {
         String email = signupInputEmail.getText().toString().trim();
+        email += "@bah.com";
         String password = signupInputPassword.getText().toString().trim();
 
         if(!checkEmail()) {
@@ -143,7 +146,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean checkEmail() {
 
-        String email = signupInputEmail.getText().toString().trim(); //get string of email
+        String email = signupInputEmail.getText().toString().trim();
+        email += "@bah.com";//get string of email
         if (email.isEmpty() || !isEmailValid(email)) {    //if email is blank or not valid
 
 

@@ -44,7 +44,7 @@ import java.util.Calendar;
 public class MapsNotifyActivity extends AppCompatActivity {
 
     private Button  signOutButton;   //Sign out Button is actually Notify Button!!!!!!
-    private TextView helloUserText;
+    //private TextView helloUserText;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     private Calendar c;
@@ -81,7 +81,7 @@ public class MapsNotifyActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user == null) {
                     // if user is null launch login activity
-                    startActivity(new Intent(MapsNotifyActivity.this, LoginActivity.class));
+                    startActivity(new Intent(MapsNotifyActivity.this, SignupActivity.class));
                     finish();
                 }else{
                     sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -143,6 +143,20 @@ public class MapsNotifyActivity extends AppCompatActivity {
                 int hour = c.get(Calendar.HOUR_OF_DAY);
                 int minute = c.get(Calendar.MINUTE);
                 int seconds = c.get(Calendar.SECOND);
+                int month = c.get(Calendar.MONTH) + 1;
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int year = c.get(Calendar.YEAR);
+                String d = Integer.toString(day);
+                if (day < 10) {
+                    d = "0" + d;
+                }
+                String mon = Integer.toString(month);
+                if (month < 10) {
+                    mon = "0" + mon;
+                }
+                String y = Integer.toString(year);
+
+                String date = mon + "/" + d + "/" + y;
                 String h = Integer.toString(hour);
                 if (hour < 10) {
                     h = "0" + h;
@@ -158,7 +172,7 @@ public class MapsNotifyActivity extends AppCompatActivity {
 
                 String time = h + ":" + m + ":" + s;
                 //int seconds = c.get(Calendar.SECOND);
-                Intent intent = new Intent(MapsNotifyActivity.this, CameraActivity.class);
+                Intent intent = new Intent(MapsNotifyActivity.this, CameraActivity.class); //CHANGE THIS TO CAMERA
                 ref.child("users")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reports")
                         .child(Integer.toString(numReports))
@@ -171,7 +185,10 @@ public class MapsNotifyActivity extends AppCompatActivity {
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reports")
                         .child(Integer.toString(numReports))
                         .child("Longitude").setValue(longit);
-
+                ref.child("users")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reports")
+                        .child(Integer.toString(numReports))
+                        .child("Date").setValue(date);
                 //soundMeter.start();
                 //double maxAmp = soundMeter.getAmplitude();
 /*
